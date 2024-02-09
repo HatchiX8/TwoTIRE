@@ -29,7 +29,7 @@
         <div class="col-lg-8">
           <div class="bg-light px-2 py-3 rounded-3 mb-3">
             <h4 class="ps-2 fw-bold text-dark">訂單明細</h4>
-            <table class="text-nowrap">
+            <table class="">
               <thead>
                 <tr class="text-center">
                   <th width="180" class="d-none d-lg-block"></th>

@@ -4,10 +4,10 @@
   <div class="bg-warning">
     <div class="container">
       <div class="row row-cols-lg-10 d-flex justify-content-center py-lg-4">
-        <div class="col-lg-7 my-3 my-lg-0">
+        <div class="col-12 col-lg-7 my-3 my-lg-0">
           <div class="bg-light px-2 py-3 rounded-3">
             <h4 class="ps-2 fw-bold text-dark">購物車內容</h4>
-            <table class="text-nowrap">
+            <table class="">
               <thead>
                 <tr class="text-center">
                   <th width="150" class="d-none d-lg-block"></th>
@@ -20,7 +20,10 @@
               </thead>
               <tbody>
                 <tr class="text-center" v-for="item in cart.carts" :key="item.id">
-                  <img :src="item.product.imageUrl" class="d-block w-100" alt="產品圖" />
+                  <img
+                    :src="item.product.imageUrl"
+                    class="d-block w-100 d-none d-lg-block"
+                    alt="產品圖" />
                   <td>{{ item.product.title }}</td>
                   <td class="px-3">
                     <select class="form-select">

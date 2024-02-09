@@ -20,7 +20,7 @@
                 <tbody class="text-dark">
                   <tr v-for="item in cart.carts" :key="item.id">
                     <td>{{ item.product.title }}</td>
-                    <td class="text-right">M</td>
+                    <td class="text-right d-none d-lg-block">M</td>
                     <td class="text-dark">{{ item.qty }}件</td>
                     <td class="text-right text-dark">
                       ${{ $filters.currency(item.product.price) }}
@@ -160,7 +160,6 @@ export default {
         this.isLoading = false;
         if (res.data.success) {
           this.cart = res.data.data;
-          console.log(this.cart);
         }
       });
     },
