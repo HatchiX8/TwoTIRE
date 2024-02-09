@@ -1,0 +1,10 @@
+.ProductList {
+  .list-style {
+    color: $dark;
+  }
+
+  .active {
+    background-color: $dark;
+    color: $warning;
+  }
+}

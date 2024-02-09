@@ -42,7 +42,7 @@ $purple: #6f42c1 !default;
 $pink: #d63384 !default;
 $red: #dc3545 !default;
 $orange: #fd7e14 !default;
-$yellow: #ffc107 !default;
+$yellow: #633108 !default;
 $green: #198754 !default;
 $teal: #20c997 !default;
 $cyan: #0dcaf0 !default;
@@ -298,14 +298,14 @@ $cyans: (
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$primary: $blue !default;
-$secondary: $gray-600 !default;
-$success: $green !default;
+$primary: #a46843; //$blue !default; custom
+$secondary: $blue !default; //$gray-600 !default; custom
+$success: #bd8e62; //$green !default; custom
 $info: $cyan !default;
-$warning: $yellow !default;
+$warning: #d5d2c1; //$yellow !default; custom
 $danger: $red !default;
 $light: $gray-100 !default;
-$dark: $gray-900 !default;
+$dark: #370d00; //$gray-900 !default; custom
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -369,7 +369,7 @@ $escaped-characters: (
 
 $enable-caret: true !default;
 $enable-rounded: true !default;
-$enable-shadows: false !default;
+$enable-shadows: true !default;
 $enable-gradients: false !default;
 $enable-transitions: true !default;
 $enable-reduced-motion: true !default;
@@ -415,6 +415,9 @@ $spacers: (
   3: $spacer,
   4: $spacer * 1.5,
   5: $spacer * 3,
+  6: $spacer * 4.5,
+  7: $spacer * 7.5,
+  8: $spacer * 12,
 ) !default;
 // scss-docs-end spacer-variables-maps
 

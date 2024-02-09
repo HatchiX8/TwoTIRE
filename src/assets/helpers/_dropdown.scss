@@ -1,0 +1,27 @@
+.dropdown-menu {
+  background-color: $success;
+  li {
+    a {
+      color: $dark;
+    }
+    a:hover {
+      color: $warning;
+      background-color: $primary;
+    }
+  }
+}
+.dropdown {
+  a {
+    color: $warning;
+  }
+  a:hover {
+    color: $success;
+  }
+}
+
+.nav-style {
+  color: $warning;
+  &:hover {
+    color: $success;
+  }
+}

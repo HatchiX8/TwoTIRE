@@ -1,0 +1,71 @@
+// 背景圖
+.back {
+  background-image: url('@/assets/img/bk.jpg');
+}
+
+//文字閃爍
+.neon {
+  color: $warning;
+  animation: neon 4s ease-in-out infinite alternate;
+}
+@keyframes neon {
+  50% {
+    color: $danger;
+  }
+}
+
+//boxHover
+
+//imgHover
+.hoverBox {
+  img {
+    height: 100%;
+    width: 100%;
+  }
+  position: relative;
+  .hoverImg {
+    position: absolute;
+    left: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+}
+
+.hoverBox:hover {
+  box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
+
+  .hoverImg {
+    opacity: 0;
+  }
+  .more {
+    color: $warning;
+  }
+}
+
+//滾動視差
+.parallax {
+  height: 400px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+.section {
+  background-image: url('@/assets/img/signboard.jpg');
+}
+
+@media (max-width: 768px) {
+  .parallax {
+    height: 320px;
+  }
+  .section {
+    background-image: url('@/assets/img/signboard-lg.jpg');
+  }
+}
+@media (max-width: 430px) {
+  .parallax {
+    height: 300px;
+  }
+  .section {
+    background-image: url('@/assets/img/signboard-sm.jpg');
+  }
+}

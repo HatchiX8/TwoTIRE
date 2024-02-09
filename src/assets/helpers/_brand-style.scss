@@ -1,0 +1,14 @@
+.brand-banner {
+  position: relative;
+  background-image: url('@/assets/img/brand-banner.jpg');
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.brand-box {
+  height: 200px;
+}
+.brand-text {
+  background-color: rgba(128, 128, 128, 0.35);
+}

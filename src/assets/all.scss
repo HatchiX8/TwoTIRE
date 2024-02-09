@@ -1,11 +1,35 @@
 @import '~bootstrap/scss/functions';
-
 @import './helpers/variables';
+
 @import '~bootstrap/scss/variables-dark';
 @import '~bootstrap/scss/maps';
-
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/root';
-@import './helpers/utilities';
 
 @import '~bootstrap/scss/bootstrap';
+
+@import './helpers/utilities';
+
+//各頁面主要style
+@import './helpers/home-style';
+@import './helpers/product-style';
+@import './helpers//brand-style';
+@import './helpers/checkout-style';
+@import './helpers/pay-style';
+@import './helpers/oneProduct-style';
+
+//元件
+@import './helpers/banner';
+@import './helpers/hide-text';
+@import './helpers/dropdown';
+@import './helpers/font-style';
+@import './helpers/deco-line';
+@import './helpers/box-hover';
+@import './helpers/sidebar';
+
+//外部元件
+@import 'animate.css';
+
+html {
+  height: 100vh;
+}
