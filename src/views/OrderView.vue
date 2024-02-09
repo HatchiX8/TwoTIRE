@@ -137,11 +137,8 @@ export default {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`;
       const order = this.form;
       this.$http.post(url, { data: order }).then((res) => {
-        console.log(res);
-        console.log(res.data.orderId);
         /* eslint-disable */
         const orderId = res.data.orderId;
-        console.log(orderId);
         this.$router.push(`/checkout/${orderId}`);
       });
     },

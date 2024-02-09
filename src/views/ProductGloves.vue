@@ -59,7 +59,6 @@ export default {
         if (res.data.success) {
           this.productsAll = res.data.products;
           this.filterData = this.productsAll.filter((item) => item.category === '手套');
-          console.log(this.filterData);
         }
       });
     },
@@ -76,7 +75,6 @@ export default {
       this.$http.post(url, { data: cart }).then((res) => {
         this.status.loadingItem = '';
         this.$httpMessageState(res, '加入購物車');
-        console.log(res);
         emitter.emit('updateCart');
       });
     },

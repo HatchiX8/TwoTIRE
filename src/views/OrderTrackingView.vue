@@ -134,7 +134,6 @@ export default {
           this.order = res.data.order;
           this.orderProducts = this.order.products;
           this.user = this.order.user;
-          console.log(this.order);
           this.showBox = true;
         }
       });

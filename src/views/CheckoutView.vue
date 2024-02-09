@@ -116,7 +116,6 @@ export default {
       this.$http.get(url).then((res) => {
         if (res.data.success) {
           this.order = res.data.order;
-          console.log(this.order);
           emitter.emit('updateCart');
         }
       });
@@ -132,7 +131,6 @@ export default {
   },
   created() {
     this.orderId = this.$route.params.orderId;
-    console.log(this.orderId);
     this.getOrder();
   },
 };

@@ -42,6 +42,8 @@
                         aria-describedby="button-addon1"
                         v-model.number="item.qty"
                         min="1"
+                        max="99"
+                        onkeydown="return false"
                         :disabled="item.id === this.status.loadingItem"
                         @change="updateCart(item)" />
                     </div>
@@ -152,7 +154,6 @@ export default {
         this.isLoading = false;
         if (res.data.success) {
           this.cart = res.data.data;
-          console.log(this.cart);
         }
       });
     },
@@ -164,8 +165,7 @@ export default {
         product_id: item.product_id,
         qty: item.qty,
       };
-      this.$http.put(url, { data: cart }).then((res) => {
-        console.log(res);
+      this.$http.put(url, { data: cart }).then(() => {
         this.status.loadingItem = '';
         this.getCart();
         emitter.emit('updateCart');
@@ -175,11 +175,10 @@ export default {
       this.status.loadingItem = id;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.isLoading = true;
-      this.$http.delete(url).then((res) => {
+      this.$http.delete(url).then(() => {
         this.getCart();
         this.status.loadingItem = '';
         this.isLoading = false;
-        console.log(res);
         emitter.emit('updateCart');
       });
     },
@@ -188,9 +187,9 @@ export default {
       const coupon = {
         code: this.coupon_code,
       };
-      this.$http.post(url, { data: coupon }).then((res) => {
-        console.log(res);
+      this.$http.post(url, { data: coupon }).then(() => {
         this.getCart();
+        this.coupon_code = '';
       });
     },
   },

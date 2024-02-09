@@ -153,7 +153,6 @@ export default {
   inject: ['emitter'],
   methods: {
     getCart() {
-      console.log('getCart');
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.isLoading = true;
       this.$http.get(api).then((res) => {
@@ -167,11 +166,10 @@ export default {
       this.status.loadingItem = id;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.isLoading = true;
-      this.$http.delete(url).then((res) => {
+      this.$http.delete(url).then(() => {
         this.getCart();
         this.status.loadingItem = '';
         this.isLoading = false;
-        console.log(res);
         emitter.emit('updateCart');
       });
     },
