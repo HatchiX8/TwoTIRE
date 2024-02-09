@@ -93,7 +93,9 @@
                 </div>
                 <div class="d-flex justify-content-between">
                   <div class="text-end">
-                    <a class="btn btn-outline-primary" type="button">上一步</a>
+                    <router-link to="cart" class="btn btn-outline-primary" type="button"
+                      >上一步</router-link
+                    >
                   </div>
                   <div class="text-end">
                     <button class="btn btn-outline-primary" type="submit">下一步</button>

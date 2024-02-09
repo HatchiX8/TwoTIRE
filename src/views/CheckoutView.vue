@@ -1,7 +1,7 @@
 <template>
   <div class="bg-primary">
     <div class="container">
-      <div class="row row-cols-lg-7 d-flex justify-content-center">
+      <div class="row row-cols-lg-7 d-flex justify-content-center px-2">
         <div class="col-lg-7 bg-light rounded-3 my-5">
           <div class="bg-light px-2 py-3 rounded-3">
             <h4 class="ps-2 fw-bold text-dark">訂單明細</h4>
@@ -17,7 +17,10 @@
               </thead>
               <tbody>
                 <tr class="text-center" v-for="item in order.products" :key="item.id">
-                  <img :src="item.product.imageUrl" class="d-block w-100" alt="產品圖示" />
+                  <img
+                    :src="item.product.imageUrl"
+                    class="d-block w-100 d-none d-lg-block"
+                    alt="產品圖示" />
                   <td>{{ item.product.title }}</td>
                   <td class="text-right">M</td>
                   <td class="text-right">{{ item.qty }}/{{ item.product.unit }}</td>
