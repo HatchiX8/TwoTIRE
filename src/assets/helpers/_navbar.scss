@@ -1,0 +1,9 @@
+.nav-style {
+  color: $warning;
+  &:hover {
+    color: $success;
+  }
+  &:active {
+    color: $primary;
+  }
+}

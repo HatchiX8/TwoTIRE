@@ -13,9 +13,10 @@
                   <th width="150" class="d-none d-lg-block"></th>
                   <th width="160">產品名稱</th>
                   <th width="100">尺寸</th>
-                  <th width="65">數量</th>
+                  <th width="75">數量</th>
                   <th width="120">單價</th>
                   <th width="50"></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -37,13 +38,10 @@
                       <input
                         type="number"
                         class="form-control text-center"
-                        placeholder="1"
                         aria-label="Example text with button addon"
                         aria-describedby="button-addon1"
                         v-model.number="item.qty"
                         min="1"
-                        max="99"
-                        onkeydown="return false"
                         :disabled="item.id === this.status.loadingItem"
                         @change="updateCart(item)" />
                     </div>
@@ -63,6 +61,9 @@
                 </tr>
               </tbody>
             </table>
+            <div class="text-end pe-4" v-if="this.qtyWarning == true">
+              <p class="text-end text-danger fs-4">商品數量上限為50</p>
+            </div>
           </div>
         </div>
         <div class="col-lg-3 sticky-top z-1" style="height: 100%; top: 80px">
@@ -106,7 +107,12 @@
                 </tr>
               </tfoot>
             </table>
-            <router-link to="order" class="btn btn-outline-primary w-100">下一步</router-link>
+            <a
+              class="btn btn-outline-primary w-100"
+              @click.prevent="cartNext"
+              :class="{ disabled: cartWarning == true }"
+              >下一步</a
+            >
           </div>
         </div>
       </div>
@@ -135,6 +141,8 @@ export default {
         // { choose: 'L' },
         // { choose: 'XL' },
       ],
+      qtyWarning: false,
+      cartWarning: true,
     };
   },
   provide() {
@@ -142,7 +150,7 @@ export default {
       emitter,
     };
   },
-  inject: ['emitter'],
+  inject: ['emitter', 'reload'],
   components: {
     CheckoutBanner,
   },
@@ -154,6 +162,11 @@ export default {
         this.isLoading = false;
         if (res.data.success) {
           this.cart = res.data.data;
+          if (this.cart.total === 0) {
+            this.cartWarning = true;
+          } else {
+            this.cartWarning = false;
+          }
         }
       });
     },
@@ -165,11 +178,18 @@ export default {
         product_id: item.product_id,
         qty: item.qty,
       };
-      this.$http.put(url, { data: cart }).then(() => {
+      if (item.qty >= 51) {
+        this.qtyWarning = true;
+        this.isLoading = false;
         this.status.loadingItem = '';
-        this.getCart();
-        emitter.emit('updateCart');
-      });
+      } else {
+        this.$http.put(url, { data: cart }).then(() => {
+          this.status.loadingItem = '';
+          this.getCart();
+          emitter.emit('updateCart');
+          this.qtyWarning = false;
+        });
+      }
     },
     removeCartItem(id) {
       this.status.loadingItem = id;
@@ -191,6 +211,9 @@ export default {
         this.getCart();
         this.coupon_code = '';
       });
+    },
+    cartNext() {
+      this.$router.push('/order');
     },
   },
   created() {

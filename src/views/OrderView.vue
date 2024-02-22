@@ -75,6 +75,7 @@
                     rules="required"
                     :class="{ 'is-invalid': errors['付款方式'] }"
                     v-model="form.user.pay">
+                    <option value="" disabled>請選擇付款方式</option>
                     <option value="信用卡">信用卡</option>
                     <option value="ATM轉帳">ATM轉帳</option>
                   </Field>

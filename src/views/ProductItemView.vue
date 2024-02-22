@@ -54,13 +54,16 @@
             </div>
             <div class="mb-3">
               <div class="input-group">
+                <button class="btn btn-outline-primary" type="button" @click="adder">+</button>
                 <input
                   type="number"
                   class="form-control text-center"
                   aria-label="Example text with button addon"
                   aria-describedby="button-addon1"
                   v-model="productsQty"
-                  min="1" />
+                  min="1"
+                  disabled />
+                <button class="btn btn-outline-primary" type="button" @click="minus">-</button>
               </div>
             </div>
             <div class="mb-3 d-flex flex-column">
@@ -151,6 +154,7 @@ export default {
     return {
       product: {},
       products: [],
+      productID: this.$route.params.id,
       filter: [],
       filterProducts: [],
       id: '',
@@ -179,6 +183,12 @@ export default {
     };
   },
   inject: ['reload'],
+  watch: {
+    $route(to) {
+      this.productID = to.params.id;
+      this.reload();
+    },
+  },
   methods: {
     async getProduct() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`;
@@ -226,8 +236,7 @@ export default {
         product_id: id,
         qty,
       };
-      /* eslint-disable */
-      const size = this.size;
+      const { size } = this.size;
       this.$http.post(url, { data: cart, size }).then((res) => {
         this.status.loadingItem = '';
         this.$httpMessageState(res, '加入購物車');
@@ -253,6 +262,16 @@ export default {
     },
     goProduct(id) {
       this.$router.push(`/product/${id}`);
+    },
+    adder() {
+      this.productsQty += 1;
+    },
+    minus() {
+      if (this.productsQty <= 1) {
+        this.productsQty = 1;
+      } else {
+        this.productsQty -= 1;
+      }
     },
   },
   async created() {
