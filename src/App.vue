@@ -1,6 +1,6 @@
 <template>
   <NavBar></NavBar>
-  <router-view v-if="isRouterAlive" />
+  <router-view v-if="isRouterAlive" class="body" />
   <FooTer></FooTer>
 </template>
 

@@ -37,8 +37,12 @@
                 </tbody>
               </table>
               <div class="d-flex justify-content-end mx-2">
-                <routerLink to="/cart" href="#" class="btn btn-primary btn-block"
-                  >結帳去</routerLink
+                <a
+                  href="#"
+                  class="btn btn-primary btn-block"
+                  @click.prevent="goBuy"
+                  :class="{ disabled: cartWarning == true }"
+                  >結帳去</a
                 >
               </div>
             </div>
@@ -144,6 +148,7 @@ export default {
       status: {
         loadingItem: '',
       },
+      cartWarning: true,
     };
   },
   provide() {
@@ -160,6 +165,11 @@ export default {
         this.isLoading = false;
         if (res.data.success) {
           this.cart = res.data.data;
+          if (this.cart.total === 0) {
+            this.cartWarning = true;
+          } else {
+            this.cartWarning = false;
+          }
         }
       });
     },
@@ -173,6 +183,9 @@ export default {
         this.isLoading = false;
         emitter.emit('updateCart');
       });
+    },
+    goBuy() {
+      this.$router.push('/cart');
     },
   },
   created() {

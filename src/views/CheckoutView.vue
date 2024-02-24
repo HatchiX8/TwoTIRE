@@ -86,6 +86,9 @@
           <div class="text-center py-3" v-if="order.is_paid === false">
             <button class="btn btn-danger">確認並付款</button>
           </div>
+          <div class="text-center py-3" v-if="order.is_paid === true">
+            <router-link to="/" class="btn btn-danger">回首頁</router-link>
+          </div>
         </form>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark m-0">
+  <div class="bg-dark m-0 sticky-footer footer">
     <div class="text-center">
       <div class="py-2">
         <a href="#" class="link-warning mx-2"

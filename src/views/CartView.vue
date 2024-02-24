@@ -11,8 +11,8 @@
               <thead>
                 <tr class="text-center">
                   <th width="150" class="d-none d-lg-block"></th>
-                  <th width="160">產品名稱</th>
-                  <th width="100">尺寸</th>
+                  <th width="140">產品名稱</th>
+                  <th width="120">尺寸</th>
                   <th width="75">數量</th>
                   <th width="120">單價</th>
                   <th width="50"></th>
