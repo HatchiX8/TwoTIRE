@@ -1,7 +1,7 @@
 <template>
   <LoadingPlugin :active="isLoading"></LoadingPlugin>
   <CheckoutBanner></CheckoutBanner>
-  <div class="bg-warning">
+  <div class="bg-warning body">
     <div class="container">
       <div class="row row-cols-lg-10 d-flex justify-content-center py-lg-4">
         <div class="col-12 col-lg-7 my-3 my-lg-0">
